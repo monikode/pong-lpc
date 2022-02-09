@@ -17,9 +17,22 @@ hud_start.color("white")
 hud_start.penup()
 hud_start.hideturtle()
 hud_start.goto(0, 0)
-hud_start.write("PRESSIONE ENTER PARA INICIAR O JOGO", align="center", font=("Small Fonts", 24, "normal"))
+hud_start.write("PRESS ENTER TO START", align="center", font=("Small Fonts", 24, "normal"))
+
+# exit message
+exit_message = turtle.Turtle()
+exit_message.speed(0)
+exit_message.shape("square")
+exit_message.color("white")
+exit_message.penup()
+exit_message.hideturtle()
+exit_message.goto(0, -280)
+exit_message.write("PRESS ESC TO EXIT", align="center", font=("Small Fonts", 12, "normal"))
 
 while True:
+    if keyboard.read_key() == "esc":
+        break
+
     if keyboard.read_key() == "enter":
         hud_start.clear()
 
@@ -72,7 +85,6 @@ while True:
         hud.goto(0, 260)
         hud.write("0 : 0", align="center", font=("Small Fonts", 24, "normal"))
 
-
         def paddle_1_up():
             y = paddle_1.ycor()
             if y < 250:
@@ -118,6 +130,9 @@ while True:
 
         while True:
             screen.update()
+
+            if keyboard.is_pressed("esc"):
+                break
 
             # ball movement
             ball.setx(ball.xcor() + ball.dx)

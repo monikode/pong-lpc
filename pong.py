@@ -1,3 +1,4 @@
+import time
 import turtle
 import keyboard
 # import os
@@ -8,6 +9,7 @@ screen1.title("My Pong")
 screen1.bgcolor("black")
 screen1.setup(width=800, height=600)
 screen1.tracer(0)
+
 
 # initial hub
 hud_start = turtle.Turtle()
@@ -169,11 +171,10 @@ while True:
                 ball.dx *= -1
 
             # collision with the paddle 1
-            if ball.xcor() < -330 and paddle_1.ycor() + 50 > ball.ycor() > paddle_1.ycor() - 50:
+            if ball.xcor() < -330 and ball.xcor() >= -350 and paddle_1.ycor() + 50 > ball.ycor() > paddle_1.ycor() - 50:
                 ball.dx *= -1
                 # os.system("afplay bounce.wav&")
-
             # collision with the paddle 2
-            if ball.xcor() > 330 and paddle_2.ycor() + 50 > ball.ycor() > paddle_2.ycor() - 50:
+            if ball.xcor() > 330 and ball.xcor() <= 350 and paddle_2.ycor() + 50 > ball.ycor() > paddle_2.ycor() - 50:
                 ball.dx *= -1
                 # os.system("afplay bounce.wav&")
